@@ -1,7 +1,7 @@
 <template>
-    <div class="container">
-        <p>Всего просмотров баннера: <b>{{ data.all_views }}</b></p>
-        <p>Уникальных просмотров баннера: <b>{{ data.unique_views }}</b></p>
+    <div class="container p-5">
+        <h2>Всего просмотров баннера: <b>{{ data.all_views }}</b></h2>
+        <h3 class="mb-4">Уникальных просмотров баннера: <b>{{ data.unique_views }}</b></h3>
         <div v-for="domain in data.domains">
             <CardComponent :domain="domain"></CardComponent>
         </div>

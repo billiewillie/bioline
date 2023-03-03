@@ -14,5 +14,6 @@
         {
             $data = $request->validated();
             $this->service->store($data);
+            return 111;
         }
     }

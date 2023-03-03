@@ -1,9 +1,13 @@
 <template>
     <div class="card mb-5 p-2">
-        <p>домен: <b>{{ domain.domain }}</b></p>
-        <p>Общее число просмотров: <b>{{ domain.visited_count }}</b></p>
-        <form type="post" action="/api/stats">
-            <div class="mb-3">
+        <p class="fs-2">домен: <b>{{ domain.domain }}</b></p>
+        <p class="fs-4">Общее число просмотров на этом домене: <b>{{ domain.visited_count }}</b></p>
+        <p class="fs-4">
+            Выберите период для просмотра статистики баннера на домене.
+        </p>
+        <small class="mb-3">Для просмотра статистики за месяц оставьте 0 в колонке числа месяца.</small>
+        <form type="post" action="/api/stats" class="d-flex gap-3 align-items-end">
+            <div>
                 <span>число месяца</span>
                 <select class="form-select" aria-label="Default select example" v-model="stats.day">
                     <template v-for="(day, index) in (1,32)">
@@ -11,7 +15,7 @@
                     </template>
                 </select>
             </div>
-            <div class="mb-3">
+            <div>
                 <span>месяц</span>
                 <select class="form-select" aria-label="Default select example" v-model="stats.month">
                     <template v-for="month in 12">
@@ -19,7 +23,7 @@
                     </template>
                 </select>
             </div>
-            <div class="mb-3">
+            <div>
                 <span>год</span>
                 <select class="form-select" v-model="stats.year">
                     <option v-for="year in years" :value="year" :selected="stats.year === year">{{
@@ -32,7 +36,7 @@
                 статистику
             </button>
         </form>
-        <div class="stat_result">
+        <div class="stat_result mt-5" v-if="result.all_views != null">
             <p>Общее число просмотров за выбранный период: {{ result.all_views }}</p>
             <p>Число просмотров с уникальных IP за выбранный период: {{ result.unique_views }}</p>
         </div>

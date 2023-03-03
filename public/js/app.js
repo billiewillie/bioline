@@ -5443,14 +5443,21 @@ var render = function render() {
     _c = _vm._self._c;
   return _c("div", {
     staticClass: "card mb-5 p-2"
-  }, [_c("p", [_vm._v("домен: "), _c("b", [_vm._v(_vm._s(_vm.domain.domain))])]), _vm._v(" "), _c("p", [_vm._v("Общее число просмотров: "), _c("b", [_vm._v(_vm._s(_vm.domain.visited_count))])]), _vm._v(" "), _c("form", {
+  }, [_c("p", {
+    staticClass: "fs-2"
+  }, [_vm._v("домен: "), _c("b", [_vm._v(_vm._s(_vm.domain.domain))])]), _vm._v(" "), _c("p", {
+    staticClass: "fs-4"
+  }, [_vm._v("Общее число просмотров на этом домене: "), _c("b", [_vm._v(_vm._s(_vm.domain.visited_count))])]), _vm._v(" "), _c("p", {
+    staticClass: "fs-4"
+  }, [_vm._v("\n        Выберите период для просмотра статистики баннера на домене.\n    ")]), _vm._v(" "), _c("small", {
+    staticClass: "mb-3"
+  }, [_vm._v("Для просмотра статистики за месяц оставьте 0 в колонке числа месяца.")]), _vm._v(" "), _c("form", {
+    staticClass: "d-flex gap-3 align-items-end",
     attrs: {
       type: "post",
       action: "/api/stats"
     }
-  }, [_c("div", {
-    staticClass: "mb-3"
-  }, [_c("span", [_vm._v("число месяца")]), _vm._v(" "), _c("select", {
+  }, [_c("div", [_c("span", [_vm._v("число месяца")]), _vm._v(" "), _c("select", {
     directives: [{
       name: "model",
       rawName: "v-model",
@@ -5479,9 +5486,7 @@ var render = function render() {
         selected: _vm.stats.day === index
       }
     }, [_vm._v(_vm._s(index))])];
-  })], 2)]), _vm._v(" "), _c("div", {
-    staticClass: "mb-3"
-  }, [_c("span", [_vm._v("месяц")]), _vm._v(" "), _c("select", {
+  })], 2)]), _vm._v(" "), _c("div", [_c("span", [_vm._v("месяц")]), _vm._v(" "), _c("select", {
     directives: [{
       name: "model",
       rawName: "v-model",
@@ -5510,9 +5515,7 @@ var render = function render() {
         selected: _vm.stats.month === month
       }
     }, [_vm._v(_vm._s(month))])];
-  })], 2)]), _vm._v(" "), _c("div", {
-    staticClass: "mb-3"
-  }, [_c("span", [_vm._v("год")]), _vm._v(" "), _c("select", {
+  })], 2)]), _vm._v(" "), _c("div", [_c("span", [_vm._v("год")]), _vm._v(" "), _c("select", {
     directives: [{
       name: "model",
       rawName: "v-model",
@@ -5549,9 +5552,9 @@ var render = function render() {
         return _vm.getStats(_vm.domain.id);
       }
     }
-  }, [_vm._v("Посмотреть\n            статистику\n        ")])]), _vm._v(" "), _c("div", {
-    staticClass: "stat_result"
-  }, [_c("p", [_vm._v("Общее число просмотров за выбранный период: " + _vm._s(_vm.result.all_views))]), _vm._v(" "), _c("p", [_vm._v("Число просмотров с уникальных IP за выбранный период: " + _vm._s(_vm.result.unique_views))])])]);
+  }, [_vm._v("Посмотреть\n            статистику\n        ")])]), _vm._v(" "), _vm.result.all_views != null ? _c("div", {
+    staticClass: "stat_result mt-5"
+  }, [_c("p", [_vm._v("Общее число просмотров за выбранный период: " + _vm._s(_vm.result.all_views))]), _vm._v(" "), _c("p", [_vm._v("Число просмотров с уникальных IP за выбранный период: " + _vm._s(_vm.result.unique_views))])]) : _vm._e()]);
 };
 var staticRenderFns = [];
 render._withStripped = true;
@@ -5575,8 +5578,10 @@ var render = function render() {
   var _vm = this,
     _c = _vm._self._c;
   return _c("div", {
-    staticClass: "container"
-  }, [_c("p", [_vm._v("Всего просмотров баннера: "), _c("b", [_vm._v(_vm._s(_vm.data.all_views))])]), _vm._v(" "), _c("p", [_vm._v("Уникальных просмотров баннера: "), _c("b", [_vm._v(_vm._s(_vm.data.unique_views))])]), _vm._v(" "), _vm._l(_vm.data.domains, function (domain) {
+    staticClass: "container p-5"
+  }, [_c("h2", [_vm._v("Всего просмотров баннера: "), _c("b", [_vm._v(_vm._s(_vm.data.all_views))])]), _vm._v(" "), _c("h3", {
+    staticClass: "mb-4"
+  }, [_vm._v("Уникальных просмотров баннера: "), _c("b", [_vm._v(_vm._s(_vm.data.unique_views))])]), _vm._v(" "), _vm._l(_vm.data.domains, function (domain) {
     return _c("div", [_c("CardComponent", {
       attrs: {
         domain: domain
